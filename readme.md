@@ -13,7 +13,7 @@ Como rodar a aplicação localmente
 
     Linux/Mac: Execute no terminal:
 
-    source venv/bin/activate
+    source venv\Scripts\activate
 
 Windows: Execute no terminal:
 
