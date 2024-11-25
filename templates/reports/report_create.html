@@ -1,0 +1,15 @@
+{% extends "layouts/b.html" %}
+
+{% block content %}
+<h1>Criar Relato</h1>
+<div class="card !p-8">
+    
+    <form method='POST'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="mt-1">Confirmar</button>
+        <a class="button secondaryAction ml-1" href="{{ request.META.HTTP_REFERER }}">Cancelar</a>
+    </form>
+</div>
+
+{% endblock content %}

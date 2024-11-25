@@ -1,0 +1,40 @@
+{% if request.path != '/accounts/login/' and request.path != '/accounts/signup/' %}
+<footer class="bg-gray-800 text-white py-8 mt-9">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Números de Emergência</h3>
+                <ul>
+                    <li><strong>Defesa Civil:</strong> 199</li>
+                    <li><strong>Bombeiros:</strong> 193</li>
+                    <li><strong>Polícia Militar:</strong> 190</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Sites Institucionais</h3>
+                <ul>
+                    <li><a href="https://www.defesacivil.gov.br" target="_blank" class="text-blue-400 hover:underline">Defesa Civil</a></li>
+                    <li><a href="https://www.bombeiros.sp.gov.br" target="_blank" class="text-blue-400 hover:underline">Corpo de Bombeiros</a></li>
+                    <li><a href="https://www.gov.br/pt-br" target="_blank" class="text-blue-400 hover:underline">Governo Federal</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Sobre o Desenvolvedor</h3>
+                <ul>
+                    <li><strong>Nome:</strong> Gabriel Mateus Da Silva</li>
+                    <li><strong>RU:</strong> 4500240</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Contato</h3>
+                <ul>
+                    <li><strong>Email:</strong> g.silva01@icloud.com </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endif %}

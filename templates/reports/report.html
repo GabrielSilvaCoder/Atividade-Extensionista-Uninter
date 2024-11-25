@@ -1,0 +1,72 @@
+{% load static %}
+
+<div class="container mx-auto py-8">
+    <h1 class="text-2xl font-bold mb-4">Relatos de Enchentes</h1>
+
+    <form method="get" class="mb-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <select name="categoria" class="border p-2 rounded">
+                <option value="">Selecione a Categoria</option>
+                <option value="Enchente" {% if request.GET.categoria == 'Enchente' %} selected {% endif %}>Enchente</option>
+                <option value="Alagamento" {% if request.GET.categoria == 'Alagamento' %} selected {% endif %}>Alagamento</option>
+            </select>
+
+            <select name="prioridade" class="border p-2 rounded">
+                <option value="">Selecione a Prioridade</option>
+                <option value="Alta" {% if request.GET.prioridade == 'Alta' %} selected {% endif %}>Alta</option>
+                <option value="Média" {% if request.GET.prioridade == 'Média' %} selected {% endif %}>Média</option>
+                <option value="Baixa" {% if request.GET.prioridade == 'Baixa' %} selected {% endif %}>Baixa</option>
+            </select>
+
+            <select name="cidade" class="border p-2 rounded">
+                <option value="">Selecione a Cidade</option>
+                {% for cidade in cidades %}
+                    <option value="{{ cidade }}" {% if request.GET.cidade == cidade %} selected {% endif %}>{{ cidade }}</option>
+                {% endfor %}
+            </select>
+
+            <select name="bairro" class="border p-2 rounded">
+                <option value="">Selecione o Bairro</option>
+                {% for bairro in bairros %}
+                    <option value="{{ bairro }}" {% if request.GET.bairro == bairro %} selected {% endif %}>{{ bairro }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit" class="bg-blue-500 text-white p-1 text-sm rounded">Filtrar</button>
+        </div>
+    </form>
+
+    <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-6">
+        {% for report in reports %}
+        <div class="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition duration-200">
+            <h2 class="text-base font-semibold text-gray-800 mb-2">{{ report.autor }}</h2>
+            <p class="text-base text-gray-600 mb-2">{{ report.rua }}</p>
+            <p class="text-base text-gray-600 mb-4">{{ report.bairro }} - {{ report.cidade }}, {{ report.estado }}</p>
+            
+            <p class="text-base text-gray-700 mb-4">{{ report.descricao }}</p>
+            
+            <div class="mt-4 flex items-center gap-3">
+                <span class="px-3 py-1 text-sm rounded 
+                    {% if report.status == 'Aberto' %} bg-red-200 text-red-800 
+                    {% elif report.status == 'Em andamento' %} bg-yellow-200 text-yellow-800 
+                    {% else %} bg-green-200 text-green-800 
+                    {% endif %}">
+                    {{ report.status }}
+                </span>
+                <span class="px-3 py-1 text-sm rounded bg-blue-100 text-blue-800">{{ report.categoria }}</span>
+                <span class="px-3 py-1 text-sm rounded bg-blue-100 text-blue-800"> Prioridade {{ report.prioridade }}</span>
+            </div>
+            
+            <div class="mt-4 flex justify-between text-sm">
+                {% if report.autor == request.user %}
+                    <a href="{% url 'report-edit' report.id %}" class="text-blue-500 hover:underline">Editar</a>
+                    <a href="{% url 'report-delete' report.id %}" class="text-red-500 hover:underline">Excluir</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+        {% if not reports %}
+        <div class="col-span-full text-center text-gray-500 py-4">Nenhum relato encontrado.</div>
+        {% endif %}
+    </div>
+</div>

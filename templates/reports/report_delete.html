@@ -1,0 +1,18 @@
+{% extends "layouts/b.html" %}
+
+{% block content %}
+
+<div class="md:flex items-center">
+    <div class="w-full md:max-w-sm mr-6 md:[&>*>*>p]:text-4xl">
+        <h1>Excluir Relato</h1>
+        <p class="mb-6">Você tem certeza que desejar excluir esse relato?</p>
+        
+        <form method='POST'>
+            {% csrf_token %}
+            <button type="submit">Confirmar</button>
+            <a class="button secondaryAction ml-1" href="{{ request.META.HTTP_REFERER }}">Voltar</a>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
