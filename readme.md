@@ -13,27 +13,27 @@ Como rodar a aplicação localmente
 
     Linux/Mac: Execute no terminal:
 
-    source venv\Scripts\activate
+- source venv\Scripts\activate
 
 Windows: Execute no terminal:
 
-    venv\Scripts\activate
+- venv\Scripts\activate
 
 2. Instale as dependências
 
-    pip install -r requirements.txt
+- pip install -r requirements.txt
 
 3. Configure o banco de dados
 
 Crie as tabelas no banco de dados com o comando:
 
-    python manage.py migrate
+- python manage.py migrate
 
 4. Inicie o servidor
 
 Para iniciar o servidor local, execute:
 
-    python manage.py runserver
+- python manage.py runserver
 
 5. Acesse a aplicação
 
@@ -43,6 +43,6 @@ Abra o navegador e acesse o endereço:   http://127.0.0.1:8000/
 
 Caso o houver interesse na área administrativa da aplicação
 
-    python manage.py createsuperuser
+- python manage.py createsuperuser
 
 Acesse através do endereço:     http://127.0.0.1:8000/admin
